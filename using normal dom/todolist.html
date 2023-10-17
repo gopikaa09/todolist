@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>To Do List</title>
+    <style>
+      :root {
+        --blue: rgb(221, 223, 89);
+        --biscuit: rgb(255, 255, 255);
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Georgia, "Times New Roman", Times, serif;
+      }
+      body {
+        background-color: rgb(204, 87, 165);
+        text-align: center;
+      }
+      h1 {
+        padding: 15px;
+      }
+      .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 70vh;
+      }
+      .input {
+        background-color: var(--biscuit);
+        padding: 15px;
+        margin: 30px 0px;
+      }
+      .input input,
+      .delete input {
+        padding: 10px;
+        margin: 5px 15px;
+        background-color: var(--blue);
+        border: none;
+      }
+      .delete {
+        background-color: var(--biscuit);
+        margin: 30px 0px;
+      }
+      #delete {
+        width: 300px;
+        margin: 25px;
+      }
+      #addtask:hover {
+        cursor: pointer;
+      }
+      pre {
+        font-size: 20px;
+      }
+      ul {
+        list-style-type: none;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>TO DO LIST</h1>
+    <pre>Each day I will accomplish one thing on my to list</pre>
+    <div class="container">
+      <div class="smallcon">
+        <div class="input">
+          <form>
+            <input type="text" name="" id="" placeholder="Enter your task" />
+            <input type="submit" value="Add Task" id="addtask" />
+          </form>
+        </div>
+        <div class="tasks">
+          <ul></ul>
+        </div>
+        <div class="delete"></div>
+      </div>
+    </div>
+
+    <script>
+      let tasksdiv = document.getElementsByClassName("tasks")[0];
+      function addtask() {
+        let addtask = document.getElementsByTagName("input")[0];
+        let gettask = addtask.value;
+        
+
+        if (addtask.value == "") {
+          alert("enter task");
+        } else {
+          let tickmark = document.createElement("img");
+          tickmark.setAttribute("src", "./images/cricle.png");
+          tickmark.style.width = "30px";
+          tickmark.style.margin = "15px 5px 0px";
+          tickmark.addEventListener("click", () => {
+            tickmark.setAttribute("src", "./images/tickcicle.png");
+            creatediv.style.textDecoration = "line-through";
+            console.log(valueoftask);
+            tickmark.addEventListener("click", () => {
+              tickmark.setAttribute("src", "./images/cricle.png");
+            });
+          });
+
+          let creatediv = document.createElement("span");
+          let valueoftask = (creatediv.innerHTML = gettask);
+          creatediv.style.backgroundColor = "rgb(221, 223, 89";
+          creatediv.style.display = "Inline-block";
+          creatediv.style.padding = "10px";
+          creatediv.style.width = "200px";
+          creatediv.style.margin = "5px 0px";
+
+          let createbtn = document.createElement("button");
+          createbtn.innerHTML = "Delete";
+          createbtn.style.padding = "10px";
+          createbtn.style.backgroundColor = "red";
+
+          let createbr = document.createElement("br");
+
+          tasksdiv.appendChild(tickmark);
+          tasksdiv.appendChild(creatediv);
+          tasksdiv.appendChild(createbtn);
+          tasksdiv.appendChild(createbr);
+          tasksdiv.style.padding = "15px";
+          tasksdiv.style.backgroundColor = "white";
+          createbtn.addEventListener("click", () => {
+            creatediv.style.display = "none";
+            createbtn.style.display = "none";
+            tickmark.style.display = "none";
+          });
+          addtask.value = "";
+          console.log(gettask);
+        }
+      }
+    </script>
+  </body>
+</html>

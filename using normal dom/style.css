@@ -1,0 +1,55 @@
+:root{
+    --blue:rgb(221, 223, 89);
+    --biscuit:rgb(255, 255, 255);
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+body{
+    background-color: rgb(204, 87, 165);
+    text-align: center;
+}
+h1{
+    padding: 15px;
+}
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70vh;
+}
+.input{
+    background-color: var(--biscuit);
+    padding: 15px;
+    margin: 30px 0px;
+}
+.input input,.delete input{
+    padding: 10px;
+    margin: 5px 15px;
+    background-color:var(--blue);
+    border: none;
+}
+/* .tasks{
+    background-color: var(--biscuit);
+    padding: 15px;
+} */
+.delete{
+    background-color: var(--biscuit);
+    margin: 30px 0px;
+}
+#delete{
+    width: 300px;
+    margin: 25px;
+}
+#addtask:hover{
+    cursor: pointer;
+}
+pre{
+    font-size: 20px;
+}
+ul{
+    list-style-type: none;
+}

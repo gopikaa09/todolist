@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Todo List</title>
+  </head>
+  <body>
+    <h1>Todo List</h1>
+    <form id="todoForm">
+      <input type="text" id="taskInput" placeholder="Enter a task" />
+      <button type="submit">Add Task</button>
+    </form>
+    <ul id="taskList"></ul>
+
+    <script>
+      const todoForm = document.getElementById("todoForm");
+      const taskInput = document.getElementById("taskInput");
+      const taskList = document.getElementById("taskList");
+      const tasks = [];
+
+      todoForm.addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        const taskText = taskInput.value.trim();
+
+        if (taskText === "") {
+          alert("Enter your task");
+          return;
+        }
+
+        tasks.push(taskText);
+        taskInput.value = "";
+        console.log(tasks);
+
+        // renderTaskList();
+      });
+
+      function renderTaskList() {
+        taskList.innerHTML = "";
+
+        tasks.forEach((task, index) => {
+          const listItem = document.createElement("li");
+
+          const taskText = document.createElement("span");
+          taskText.textContent = task;
+
+          const editButton = document.createElement("button");
+          editButton.textContent = "Edit";
+          editButton.addEventListener("click", () => editTask(index, taskText));
+
+          const doneButton = document.createElement("button");
+          doneButton.textContent = "Done";
+          doneButton.addEventListener("click", () => markTaskAsDone(index));
+
+          const deleteButton = document.createElement("button");
+          deleteButton.textContent = "Delete";
+          deleteButton.addEventListener("click", () => deleteTask(index));
+
+          listItem.appendChild(taskText);
+          listItem.appendChild(editButton);
+          listItem.appendChild(doneButton);
+          listItem.appendChild(deleteButton);
+          taskList.appendChild(listItem);
+        });
+      }
+
+      function editTask(index, taskTextElement) {
+        const inputField = document.createElement("input");
+        inputField.type = "text";
+        inputField.value = tasks[index];
+
+        const saveButton = document.createElement("button");
+        saveButton.textContent = "Save";
+        saveButton.addEventListener("click", () =>
+          saveEditedTask(index, taskTextElement, inputField)
+        );
+
+        const cancelButton = document.createElement("button");
+        cancelButton.textContent = "Cancel";
+        cancelButton.addEventListener("click", () =>
+          cancelEdit(index, taskTextElement, inputField)
+        );
+
+        taskTextElement.replaceWith(inputField, saveButton, cancelButton);
+      }
+
+      function saveEditedTask(index, taskTextElement, inputField) {
+        tasks[index] = inputField.value.trim();
+        renderTaskList();
+      }
+
+      function cancelEdit(index, taskTextElement, inputField) {
+        inputField.replaceWith(taskTextElement);
+      }
+
+      function markTaskAsDone(index) {
+        // You can add logic here to mark tasks as done.
+      }
+
+      function deleteTask(index) {
+        tasks.splice(index, 1);
+        renderTaskList();
+      }
+    </script>
+  </body>
+</html>

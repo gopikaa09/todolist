@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>To Do List</title>
+  </head>
+  <body>
+    <h1>TO DO LIST</h1>
+    <pre>Each day I will accomplish one thing on my to list</pre>
+    <div class="container">
+      <div class="smallcon">
+        <div class="input">
+          <form>
+            <input type="text" name="" id="" placeholder="Enter your task" />
+            <input type="submit" value="Add Task" id="addtask" />
+          </form>
+        </div>
+        <div class="tasks">
+            <ul></ul>
+        </div>
+        <div class="delete">
+ 
+        </div>
+      </div>
+    </div>
+
+    <script src="./index.js"></script>
+  </body>
+</html>
+
+
+<!-- <!DOCTYPE html>
+<html>
+<head>
+    <title>Todo List</title>
+</head>
+<body>
+    <h1>Todo List</h1>
+    <form id="todoForm">
+        <input type="text" id="taskInput" placeholder="Enter a task">
+        <button type="submit">Add Task</button>
+    </form>
+    <ul id="taskList"></ul>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const todoForm = document.getElementById("todoForm");
+            const taskInput = document.getElementById("taskInput");
+            const taskList = document.getElementById("taskList");
+            const tasks = [];
+
+            todoForm.addEventListener("submit", function (event) {
+                event.preventDefault();
+
+                const taskText = taskInput.value.trim();
+
+                if (taskText === "") {
+                    alert("Enter your task");
+                    return;
+                }
+
+                tasks.push(taskText);
+                taskInput.value = "";
+
+                renderTaskList();
+            });
+
+            function renderTaskList() {
+                taskList.innerHTML = "";
+
+                tasks.forEach((task, index) => {
+                    const listItem = document.createElement("li");
+                    listItem.textContent = task;
+
+                    const editButton = document.createElement("button");
+                    editButton.textContent = "Edit";
+                    editButton.addEventListener("click", () => editTask(index));
+
+                    const doneButton = document.createElement("button");
+                    doneButton.textContent = "Done";
+                    doneButton.addEventListener("click", () => markTaskAsDone(index));
+
+                    const deleteButton = document.createElement("button");
+                    deleteButton.textContent = "Delete";
+                    deleteButton.addEventListener("click", () => deleteTask(index));
+
+                    listItem.appendChild(editButton);
+                    listItem.appendChild(doneButton);
+                    listItem.appendChild(deleteButton);
+                    taskList.appendChild(listItem);
+                });
+            }
+
+            function editTask(index) {
+                const newTaskText = prompt("Edit the task:", tasks[index]);
+
+                if (newTaskText !== null) {
+                    tasks[index] = newTaskText.trim();
+                    renderTaskList();
+                }
+            }
+
+            function markTaskAsDone(index) {
+                // You can add logic here to mark tasks as done.
+            }
+
+            function deleteTask(index) {
+                tasks.splice(index, 1);
+                renderTaskList();
+            }
+        });
+    </script>
+</body>
+</html> -->
+
